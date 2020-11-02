@@ -7,6 +7,7 @@ This project provides a simple scaffold for node applications with typescript. I
 
 ```bash
 npm install
+cp .env.example .env
 ```
 
 ## Running
