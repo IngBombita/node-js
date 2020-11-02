@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const inversify_1 = require("inversify");
+const routes_1 = require("./routes");
+const app_1 = require("./app");
+const example_controller_1 = require("./controllers/example.controller");
+const DIContainer = new inversify_1.Container();
+DIContainer.bind(app_1.App).toSelf();
+DIContainer.bind(example_controller_1.ExampleController).toSelf();
+DIContainer.bind(routes_1.Router).toSelf();
+exports.default = DIContainer;
