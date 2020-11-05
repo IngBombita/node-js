@@ -1,9 +1,9 @@
-import express from 'express';
+import express, {Application} from 'express';
 import {injectable} from "inversify";
 
 @injectable()
 export class App {
-  public app: express.Application;
+  public app: Application;
   public port: number | undefined;
 
   constructor() {
@@ -12,6 +12,10 @@ export class App {
 
   public setPort(port: number) {
     this.port = port;
+  }
+
+  public setViewEngine(viewEngine: string) {
+    this.app.set('view engine', viewEngine);
   }
 
   public listen() {

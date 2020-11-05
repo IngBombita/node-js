@@ -18,7 +18,8 @@
     "inversify": "^5.0.1",
     "reflect-metadata": "^0.1.13",
     "ts-node-dev": "^1.0.0-pre.32",
-    "typescript": "^3.3.4000"
+    "typescript": "^3.3.4000",
+    "twing": "^5.0.2"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",

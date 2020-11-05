@@ -34,6 +34,9 @@ export class Router implements IRouter {
 
     this.appInstance.route('/examples')
       .get(this.exampleController.getAll.bind(this.exampleController))
-      .post(this.exampleController.create.bind(this.exampleController))
+      .post(this.exampleController.create.bind(this.exampleController));
+
+    this.appInstance.route('/examples/form')
+      .get(this.exampleController.showExampleForm.bind(this.exampleController));
   }
 }
