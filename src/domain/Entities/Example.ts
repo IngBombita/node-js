@@ -1,5 +1,6 @@
-import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {IExample} from "../../interfaces/example.interface";
+import {Category} from "./Category";
 
 @Entity()
 export class Example extends BaseEntity implements IExample {
@@ -9,4 +10,6 @@ export class Example extends BaseEntity implements IExample {
     @Column()
     name: string = '';
 
+    @ManyToOne(() => Example)
+    category: Category;
 }

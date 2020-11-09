@@ -3,6 +3,7 @@ import {inject, injectable} from "inversify";
 import {Example} from "../domain/Entities/Example";
 import TYPES from "../types";
 import {ExampleRepository} from "../domain/Repositories/ExampleRepository";
+import {Category} from "../domain/Entities/Category";
 
 const {TwingEnvironment, TwingLoaderFilesystem} = require('twing');
 let loader = new TwingLoaderFilesystem('src/views');
@@ -25,8 +26,9 @@ export class ExampleController {
         });
     };
 
-    public showExampleForm(req: Request, res: Response) {
-        twing.render('exampleForm.twing.html').then((output: any) => {
+    public async showExampleForm(req: Request, res: Response) {
+        let categories = await Category.find();
+        twing.render('exampleForm.twing.html', {categories}).then((output: any) => {
             res.end(output);
         });
     }

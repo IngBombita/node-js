@@ -7,7 +7,7 @@
 <h1>My Webpage</h1>
 <ul id="navigation">
     {% for item in examples %}
-    <li>{{ item.name }}</li>
+    <li>{{ item.name }}    -    Category: {{ item.category.name }}</li>
     {% endfor %}
 </ul>
 

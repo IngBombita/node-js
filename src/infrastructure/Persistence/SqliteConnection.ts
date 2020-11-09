@@ -1,5 +1,6 @@
 import {Connection, createConnection} from "typeorm";
 import {Example} from "../../domain/Entities/Example";
+import {Category} from "../../domain/Entities/Category";
 
 export class SqliteConnection {
     public static async createConnection(): Promise<Connection> {
@@ -9,7 +10,7 @@ export class SqliteConnection {
             dropSchema: true,
             synchronize: true,
             logging: true,
-            entities: [Example],
+            entities: [Example, Category],
         });
     }
 }
