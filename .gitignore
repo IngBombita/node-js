@@ -106,3 +106,5 @@ build/
 
 #JetBrains IDEs config file
 .idea/
+
+sqlite3

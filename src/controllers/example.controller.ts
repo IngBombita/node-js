@@ -1,21 +1,26 @@
 import {Request, Response} from 'express';
-import {IExample} from "../interfaces/example.interface";
-import {injectable} from "inversify";
+import {inject, injectable} from "inversify";
+import {Example} from "../domain/Entities/Example";
+import TYPES from "../types";
+import {ExampleRepository} from "../domain/Repositories/ExampleRepository";
+
 const {TwingEnvironment, TwingLoaderFilesystem} = require('twing');
 let loader = new TwingLoaderFilesystem('src/views');
 let twing = new TwingEnvironment(loader);
 
 @injectable()
 export class ExampleController {
+    private exampleRepository: ExampleRepository;
 
-    private examples: IExample[] = [
-        {name: 'This is one example.'},
-        {name: 'This is another one.'},
-        {name: 'And one more example.'}
-    ];
+    constructor(@inject(TYPES.ExampleRepository) exampleRepository: ExampleRepository) {
+        this.exampleRepository = exampleRepository;
+    }
 
-    public getAll(request: Request, response: Response) {
-        twing.render('examples.twing.html', {examples: this.examples}).then((output: any) => {
+    public async getAll(request: Request, response: Response) {
+
+        let examples = await this.exampleRepository.findAll();
+
+        twing.render('examples.twing.html', {examples}).then((output: any) => {
             response.end(output);
         });
     };
@@ -26,10 +31,13 @@ export class ExampleController {
         });
     }
 
-    public create(request: Request, response: Response) {
-        const example: IExample = request.body;
+    public async create(request: Request, response: Response) {
+        const payload = request.body;
 
-        this.examples.push(example);
+        const example: Example = new Example();
+        example.name = payload.name;
+
+        await this.exampleRepository.save(example);
 
         response.redirect('/examples');
     };
