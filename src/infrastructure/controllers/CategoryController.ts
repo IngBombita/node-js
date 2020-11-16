@@ -1,9 +1,9 @@
 import {Request, Response} from "express";
 import {injectable} from "inversify";
-import {Category} from "../domain/Entities/Category";
+import {Category} from "../../domain/Entities/Category";
 
 const {TwingEnvironment, TwingLoaderFilesystem} = require('twing');
-let loader = new TwingLoaderFilesystem('src/views');
+let loader = new TwingLoaderFilesystem('src/infrastructure/views');
 let twing = new TwingEnvironment(loader);
 
 @injectable()

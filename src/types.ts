@@ -1,5 +1,6 @@
 let TYPES = {
-    ExampleRepository: Symbol("ExampleRepository")
+    ExampleRepository: Symbol("ExampleRepository"),
+    IMailer: Symbol("IMailer")
 };
 
 export default TYPES;

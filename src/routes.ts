@@ -1,10 +1,10 @@
 import * as express from 'express';
-import {ExampleController} from "./controllers/ExampleController";
+import {ExampleController} from "./infrastructure/controllers/ExampleController";
 import bodyParser from "body-parser";
 import {App} from "./app";
 import {inject, injectable} from "inversify";
 import {IRouter} from "./interfaces/router.interface";
-import {CategoryController} from "./controllers/CategoryController";
+import {CategoryController} from "./infrastructure/controllers/CategoryController";
 
 @injectable()
 export class Router implements IRouter {
