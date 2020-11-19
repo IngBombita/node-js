@@ -3,7 +3,7 @@ import {Example} from "../../domain/Entities/Example";
 import {injectable} from "inversify";
 
 @injectable()
-export class TypeORMExampleRepository implements ExampleRepository {
+export default class TypeORMExampleRepository implements ExampleRepository {
     async findOneById(id: number): Promise<Example | undefined> {
         return await Example.findOne({id});
     }

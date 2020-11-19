@@ -12,9 +12,7 @@ export class ExampleService {
     }
 
     public async create(name: string): Promise<Example> {
-        const example: Example = new Example();
-        example.name = name;
-
+        let example = Example.createInstance(name);
         await this.exampleRepository.save(example);
 
         return example;
